@@ -1,15 +1,15 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="space-y-6">
         @csrf
 
-        <div class="mb-6">
-            <h2 class="font-serif text-2xl font-bold text-white mb-2">Join Our Library</h2>
-            <p class="text-sm text-white/80 mb-6">Create an account to access books, make reservations, and manage your loans</p>
+        <div class="mb-8">
+            <h2 class="font-serif text-3xl font-bold text-white mb-3">Join Our Library</h2>
+            <p class="text-gray-300">Create an account to access books, make reservations, and manage your loans</p>
         </div>
 
         <!-- Name -->
-        <div class="mb-4">
-            <label for="name" class="block text-sm font-medium text-white mb-2">
+        <div class="space-y-2">
+            <label for="name" class="block text-sm font-medium text-gray-300">
                 Full Name
             </label>
             <input
@@ -20,15 +20,15 @@
                 required
                 autofocus
                 autocomplete="name"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="John Smith"
             />
             <x-input-error :messages="$errors->get('name')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Email Address -->
-        <div class="mb-4">
-            <label for="email" class="block text-sm font-medium text-white mb-2">
+        <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium text-gray-300">
                 Email Address
             </label>
             <input
@@ -38,15 +38,15 @@
                 :value="old('email')"
                 required
                 autocomplete="email"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="john@example.com"
             />
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Password -->
-        <div class="mb-4">
-            <label for="password" class="block text-sm font-medium text-white mb-2">
+        <div class="space-y-2">
+            <label for="password" class="block text-sm font-medium text-gray-300">
                 Password
             </label>
             <input
@@ -55,18 +55,18 @@
                 name="password"
                 required
                 autocomplete="new-password"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="••••••••"
             />
-            <div class="mt-2 text-xs text-white/60">
+            <div class="mt-2 text-xs text-gray-400">
                 Use at least 8 characters with a mix of letters, numbers & symbols
             </div>
             <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Confirm Password -->
-        <div class="mb-6">
-            <label for="password_confirmation" class="block text-sm font-medium text-white mb-2">
+        <div class="space-y-2">
+            <label for="password_confirmation" class="block text-sm font-medium text-gray-300">
                 Confirm Password
             </label>
             <input
@@ -75,14 +75,14 @@
                 name="password_confirmation"
                 required
                 autocomplete="new-password"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="••••••••"
             />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Library Card Information (Optional) -->
-        <div class="mb-6 p-4 bg-white/10 backdrop-blur-sm rounded-sm border border-white/20">
+        <div class="p-6 bg-gray-800/50 backdrop-blur-sm rounded-lg border border-gray-700 space-y-4">
             <h3 class="text-sm font-medium text-white mb-3">Library Card Preferences</h3>
             <div class="space-y-3">
                 <div class="flex items-center">
@@ -90,9 +90,9 @@
                         id="receive_newsletter"
                         type="checkbox"
                         name="receive_newsletter"
-                        class="rounded border-white/30 bg-white/10 text-blue-400 focus:ring-blue-400/50"
+                        class="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500/50"
                     />
-                    <label for="receive_newsletter" class="ml-2 text-sm text-white/80">
+                    <label for="receive_newsletter" class="ml-3 text-sm text-gray-300">
                         Receive monthly newsletter about new arrivals
                     </label>
                 </div>
@@ -101,10 +101,10 @@
                         id="email_notifications"
                         type="checkbox"
                         name="email_notifications"
-                        class="rounded border-white/30 bg-white/10 text-blue-400 focus:ring-blue-400/50"
+                        class="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500/50"
                         checked
                     />
-                    <label for="email_notifications" class="ml-2 text-sm text-white/80">
+                    <label for="email_notifications" class="ml-3 text-sm text-gray-300">
                         Receive email notifications for due dates
                     </label>
                 </div>
@@ -112,84 +112,80 @@
         </div>
 
         <!-- Terms & Conditions -->
-        <div class="mb-6">
+        <div class="space-y-2">
             <div class="flex items-start">
                 <input
                     id="terms"
                     type="checkbox"
                     name="terms"
                     required
-                    class="mt-1 rounded border-white/30 bg-white/10 text-blue-400 focus:ring-blue-400/50"
+                    class="mt-1 rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500/50"
                 />
-                <label for="terms" class="ml-2 text-sm text-white/80">
-                    I agree to the <a href="/terms" class="text-white hover:text-white/80 underline">Terms of Service</a> 
-                    and <a href="/privacy" class="text-white hover:text-white/80 underline">Privacy Policy</a>
+                <label for="terms" class="ml-3 text-sm text-gray-300">
+                    I agree to the <a href="/terms" class="text-blue-300 hover:text-blue-200 underline">Terms of Service</a> 
+                    and <a href="/privacy" class="text-blue-300 hover:text-blue-200 underline">Privacy Policy</a>
                 </label>
             </div>
             <x-input-error :messages="$errors->get('terms')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Submit Button -->
-        <div class="mb-6">
-            <button type="submit" class="w-full bg-white hover:bg-white/90 text-blue-600 font-medium py-3 px-4 rounded-sm text-sm leading-normal transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent">
-                Create Library Account
-            </button>
-        </div>
+        <button type="submit" class="btn-primary w-full py-3 text-base font-semibold">
+            Create Library Account
+        </button>
 
         <!-- Divider -->
-        <div class="relative mb-6">
+        <div class="relative my-8">
             <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-white/30"></div>
+                <div class="w-full border-t border-gray-700"></div>
             </div>
             <div class="relative flex justify-center text-sm">
-                <span class="px-2 bg-transparent text-white/60">
+                <span class="px-4 bg-transparent text-gray-500">
                     Already have an account?
                 </span>
             </div>
         </div>
 
         <!-- Login Link -->
-        <div class="text-center">
-            <a href="{{ route('login') }}" class="inline-block w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-sm text-sm leading-normal transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-transparent border border-white/20">
-                Sign In to Existing Account
-            </a>
-        </div>
+        <a href="{{ route('login') }}" class="btn-secondary w-full py-3 text-base font-semibold text-center block">
+            Sign In to Existing Account
+        </a>
 
         <!-- Membership Benefits -->
-        <div class="mt-8 pt-6 border-t border-white/30">
+        <div class="mt-8 pt-6 border-t border-gray-700">
             <h4 class="text-sm font-medium text-white mb-4">Membership Benefits</h4>
             <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <svg class="w-3 h-3 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                         </svg>
                     </div>
-                    <span class="text-xs text-white/80">50+ Book Loans</span>
+                    <span class="text-sm text-gray-300">50+ Book Loans</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <svg class="w-3 h-3 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <span class="text-xs text-white/80">24/7 Digital Access</span>
+                    <span class="text-sm text-gray-300">24/7 Digital Access</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <svg class="w-3 h-3 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <span class="text-xs text-white/80">Online Reservations</span>
+                    <span class="text-sm text-gray-300">Online Reservations</span>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                        <svg class="w-3 h-3 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                        <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <span class="text-xs text-white/80">Fast Checkout</span>
+                    <span class="text-sm text-gray-300">Fast Checkout</span>
                 </div>
             </div>
         </div>

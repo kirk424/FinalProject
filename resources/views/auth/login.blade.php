@@ -1,18 +1,18 @@
 <x-guest-layout>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4 text-sm text-red-300" :status="session('status')" />
+    <x-auth-session-status class="mb-6 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-300" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="space-y-6">
         @csrf
 
-        <div class="mb-6">
-            <h2 class="font-serif text-2xl font-bold text-white mb-2">Welcome Back</h2>
-            <p class="text-sm text-white/80 mb-6">Sign in to access the library management dashboard</p>
+        <div class="mb-8">
+            <h2 class="font-serif text-3xl font-bold text-white mb-3">Welcome Back</h2>
+            <p class="text-gray-300">Sign in to access the library management dashboard</p>
         </div>
 
         <!-- Email Address -->
-        <div class="mb-6">
-            <label for="email" class="block text-sm font-medium text-white mb-2">
+        <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium text-gray-300">
                 Email Address
             </label>
             <input
@@ -23,20 +23,20 @@
                 required
                 autofocus
                 autocomplete="username"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="librarian@example.com"
             />
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Password -->
-        <div class="mb-6">
-            <div class="flex items-center justify-between mb-2">
-                <label for="password" class="block text-sm font-medium text-white">
+        <div class="space-y-2">
+            <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm font-medium text-gray-300">
                     Password
                 </label>
                 @if (Route::has('password.request'))
-                    <a class="text-sm text-white hover:text-white/80 transition-colors underline" href="{{ route('password.request') }}">
+                    <a class="text-sm text-blue-300 hover:text-blue-200 transition-colors" href="{{ route('password.request') }}">
                         Forgot password?
                     </a>
                 @endif
@@ -47,39 +47,37 @@
                 name="password"
                 required
                 autocomplete="current-password"
-                class="glass-input w-full px-4 py-3 rounded-sm placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 text-sm transition-all"
+                class="glass-input w-full px-4 py-3 rounded-lg placeholder-gray-500 focus:outline-none text-base"
                 placeholder="••••••••"
             />
             <x-input-error :messages="$errors->get('password')" class="mt-2 text-sm text-red-300" />
         </div>
 
         <!-- Remember Me -->
-        <div class="mb-6">
-            <label for="remember_me" class="inline-flex items-center cursor-pointer">
-                <input
-                    id="remember_me"
-                    type="checkbox"
-                    name="remember"
-                    class="rounded border-white/30 bg-white/10 text-blue-400 focus:ring-blue-400/50 transition-all"
-                />
-                <span class="ms-2 text-sm text-white/80">Remember me on this device</span>
+        <div class="flex items-center">
+            <input
+                id="remember_me"
+                type="checkbox"
+                name="remember"
+                class="rounded border-gray-600 bg-gray-700 text-blue-500 focus:ring-blue-500/50 transition-all"
+            />
+            <label for="remember_me" class="ml-3 text-sm text-gray-300">
+                Remember me on this device
             </label>
         </div>
 
         <!-- Submit Button -->
-        <div class="mb-6">
-            <button type="submit" class="w-full bg-white hover:bg-white/90 text-blue-600 font-medium py-3 px-4 rounded-sm text-sm leading-normal transition-colors focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent">
-                Sign In to Dashboard
-            </button>
-        </div>
+        <button type="submit" class="btn-primary w-full py-3 text-base font-semibold">
+            Sign In to Dashboard
+        </button>
 
         <!-- Divider -->
-        <div class="relative mb-6">
+        <div class="relative my-8">
             <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-white/30"></div>
+                <div class="w-full border-t border-gray-700"></div>
             </div>
             <div class="relative flex justify-center text-sm">
-                <span class="px-2 bg-transparent text-white/60">
+                <span class="px-4 bg-transparent text-gray-500">
                     New to the library?
                 </span>
             </div>
@@ -87,29 +85,9 @@
 
         <!-- Register Link -->
         @if (Route::has('register'))
-            <div class="text-center">
-                <a href="{{ route('register') }}" class="inline-block w-full bg-white/10 hover:bg-white/20 text-white font-medium py-3 px-4 rounded-sm text-sm leading-normal transition-colors focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-transparent border border-white/20">
-                    Create New Library Account
-                </a>
-            </div>
+            <a href="{{ route('register') }}" class="btn-secondary w-full py-3 text-base font-semibold text-center block">
+                Create New Library Account
+            </a>
         @endif
-
-        <!-- Stats -->
-        <div class="mt-8 pt-6 border-t border-white/30">
-            <div class="grid grid-cols-3 gap-4 text-center">
-                <div>
-                    <div class="text-lg font-bold text-white">50K+</div>
-                    <div class="text-xs text-white/80">Books</div>
-                </div>
-                <div>
-                    <div class="text-lg font-bold text-white">5K+</div>
-                    <div class="text-xs text-white/80">Members</div>
-                </div>
-                <div>
-                    <div class="text-lg font-bold text-white">99%</div>
-                    <div class="text-xs text-white/80">Uptime</div>
-                </div>
-            </div>
-        </div>
     </form>
 </x-guest-layout>

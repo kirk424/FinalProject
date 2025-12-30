@@ -38,6 +38,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/borrows/{borrow}/return', [BorrowController::class, 'return'])
         ->name('borrows.return');
+
+        Route::delete('/borrows/{borrow}', [BorrowController::class, 'destroy'])
+        ->name('borrows.destroy');
 });
 
 require __DIR__.'/auth.php';
